@@ -40,7 +40,7 @@ class CartesianPose:
     笛卡尔坐标描述的位姿
     '''
     def __init__(self, x=0, y=0, z=0, rz=0, ry=0, rx=0, base=None):
-        if type(x) is list or type(x) is tuple:
+        if hasattr(x, '__iter__') and len(x) >= 6:
             self.pos = (x[0], x[1], x[2], x[3], x[4], x[5])
         elif type(x) is CartesianPose:
             self.pos = x.pos[:]
